@@ -31,7 +31,7 @@ print(math.sin(math.pi/2))
 print(f"반지름 {r}인 원의 면적 = {area}")
 
 print(id(r)) #변수마다 주소가 다름
-'''
+
 
 #Lab : 별까지의 거리 계산하기
 distance = 4e13
@@ -63,21 +63,21 @@ where = input("경기장은 어디입니까? ")
 win_team = input("이긴팀은 어디입니까? ")
 lose_team = input("진팀은 어디입니까? ")
 mvp = input("우수선수는 누구입니까? ")
-score = input("스코어는 몇대몇입니까? ")
+score = input("스코어는 몇대몇입니까? \n")
 
-print("="*50)
+print("="*40)
 print(f"오늘 {where}에서 야구 경기가 열렸습니다.")
 print(f"{win_team}과 {lose_team}은 치열한 공방전을 펼쳤습니다.")
 print(f"{mvp}이 맹활약을 하였습니다.")
 print(f"결국 {win_team}가 {lose_team}를 {score}로 이겼습니다.")
-print("="*50)
+print("="*40)
 
 #Lab : 대화하는 프로그램 만들기
-print("안녕하세요?")
+print("안녕하세요?\n")
 
 name = input("이름이 어떻게 되시나요? ")
 print(f"만나서 반갑습니다. {name}씨")
-print(f"이름의 길이는 다음과 같군요: {len(name)}")
+print(f"이름의 길이는 다음과 같군요: {len(name)}\n")
 age = int(input("나이가 어떻게 되나요? "))
 print(f"내년이면 {age+1}이 되시는군요.")
 
@@ -97,3 +97,13 @@ radius = float(input("반지름을 입력하시오: "))
 sphere_volume = math.pi * (radius**3) * 4 / 3
 
 print(f"구의 부피 = {sphere_volume}")
+'''
+#Lab : 자동판매기 프로그램
+
+price = int(input("물건값을 입력하시오: "))
+
+print(f"1000원의지폐개수: {price // 1000}")
+print(f"500원의 동전개수: {(price % 1000) // 500}")
+print(f"100원의 동전개수: {((price % 1000) % 500) // 100}")
+print(f"10원의 동전개수: {(price % 100) // 10}")
+print(f"1원의 동전개수: {(price % 10)}")
