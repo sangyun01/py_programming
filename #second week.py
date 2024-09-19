@@ -31,7 +31,7 @@ print(math.sin(math.pi/2))
 print(f"반지름 {r}인 원의 면적 = {area}")
 
 print(id(r)) #변수마다 주소가 다름
-
+'''
 
 #Lab : 별까지의 거리 계산하기
 distance = 4e13
@@ -97,7 +97,7 @@ radius = float(input("반지름을 입력하시오: "))
 sphere_volume = math.pi * (radius**3) * 4 / 3
 
 print(f"구의 부피 = {sphere_volume}")
-'''
+
 #Lab : 자동판매기 프로그램
 
 price = int(input("물건값을 입력하시오: "))
