@@ -13,41 +13,10 @@ if x + y == num:
 else:
     print("False")
 
-# Lab: 산술 퀴즈 프로그램1 - 도전문제
-import random
-
-x = random.randint(1, 100)
-y = random.randint(1, 100)
-z = random.randint(1, 2)
-
-if z == 1:
-    num = int(input(f"{x}+{y} = "))
-    if x + y == num:
-        print("True")
-    else:
-        print("False")
-else:
-    num = int(input(f"{x}-{y} = "))
-    if x - y == num:
-        print("True")
-    else:
-        print("False")
-
 # Lab: 산술퀴즈 프로그램2
 num = int(input("정수를 입력하시오: "))
 
 print("짝수입니다." if (num % 2) == 0 else "홀수입니다.")
-
-# Lab: 산술퀴즈 프로그램2 - 도전문제 1
-num = int(input("정수를 입력하시오: "))
-
-print("양수입니다." if num >= 0 else "음수입니다.")
-
-# Lab: 산술퀴즈 프로그램2 - 도전문제 2
-num = int(input("성적을 입력해주세요: "))
-
-print("합격입니다." if num >= 60 else "불합격입니다.")
-
 
 # Lab: 세일 가격 계산
 price = float(input("정가를 입력하시오:(만원) "))
