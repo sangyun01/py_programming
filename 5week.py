@@ -22,7 +22,7 @@ display("환영합니다.", 5)
 
 
 # Lab: 환영 문자열 출력 함수 - 도전문제1
-def display(count, msg="환영합니다."):
+def display(count, msg="Welcome."):
     for i in range(1, count + 1):
         print(msg)
 
