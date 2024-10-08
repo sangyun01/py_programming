@@ -114,3 +114,35 @@ def modify(money):
 
 month_money = modify(month_money)
 print(f"인상후{month_money}")
+
+# Lab: 리스트 함축 사용하기
+num_6 = [i for i in range(100) if (i % 2 == 0) and (i % 3 == 0)]
+print(num_6)
+
+# Lab: 리스트 함축 사용하기 - 도전문제
+num_odd = ["짝수" if i % 2 == 0 else "홀수" for i in range(10)]
+print(num_odd)
+
+# Lab: 누적값 리스트 만들기
+lst = [10, 20, 30, 40, 50]
+
+#lst_new = [sum(lst[: i + 1]) for i in range(len(lst))]
+#print(f"새로운 리스트 : {lst_new}")
+
+lst_new = []
+num = 0
+for i in range(len(lst)):
+    num = num + lst[i]
+    lst_new.append(num)
+
+print(f"원래 리스트 :{lst}")
+print(f"새로운 리스트 : {lst_new}")
+
+# Lab: 피타고라스 삼각형
+tri = [(x,y,z) for x in range(1,31) for y in range(x,31) for z in range(y,31) if x**2 + y**2 == z**2]
+print(tri)
+
+
+
+
+
