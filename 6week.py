@@ -1,7 +1,6 @@
 # 6주차 리스트
 
 # Lab: 성적 처리 프로그램
-
 numbers = []
 count = 0
 
@@ -34,13 +33,10 @@ scores.remove(min(scores))
 print(scores)
 
 # Lab: 리스트로 스택 흉내내기
-
 fruits = []
-
 
 def push_fruit(fruit):
     fruits.append(fruit)
-
 
 for i in range(3):
     fruit = input("과일을 입력하시오: ")
@@ -52,7 +48,6 @@ for fruit in reversed(fruits):
 # Lab: 친구 관리 프로그램
 friendslist = []
 
-
 def menubar_friend():
     print("-" * 20)
     print("1. 친구 리스트 출력")
@@ -60,7 +55,6 @@ def menubar_friend():
     print("3. 친구 삭제")
     print("4. 이름 변경")
     print("9. 종료")
-
 
 while True:
     menubar_friend()
@@ -111,7 +105,6 @@ def modify(money):
 
     return money
 
-
 month_money = modify(month_money)
 print(f"인상후{month_money}")
 
@@ -142,7 +135,12 @@ print(f"새로운 리스트 : {lst_new}")
 tri = [(x,y,z) for x in range(1,31) for y in range(x,31) for z in range(y,31) if x**2 + y**2 == z**2]
 print(tri)
 
+# Lab: 전치 행렬 계산
+mat = [i for i in range(1, 10)]  # 1~9의 row vector 1개 생성
 
+matrix = [mat[j : j + 3] for j in range(0, 9, 3)]  # mat[0]->1 mat[3]->4 mat[6]->7
+print(matrix)
 
-
-
+matrix_t = [[row[i] for row in matrix] for i in range(3)]
+# matrix의 행마다 순차적으로 147(i=0)/258(i=1)/369(i=2)를 뽑아내서 출력
+print(matrix_t)
