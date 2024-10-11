@@ -76,10 +76,10 @@ while True:
         ex_name = input("변경 대상의 이름을 입력하시오: ")
         if ex_name in friendslist:
             new_name = input("변경할 이름을 입력하시오: ")
-            name_index = friendslist.index(name)
+            name_index = friendslist.index(ex_name)
             friendslist[name_index] = new_name
         else:
-            print(f"{name}은 목록에 없습니다.")
+            print(f"{ex_name}은 목록에 없습니다.")
     elif menu_num == 9:
         break
     else:
@@ -144,3 +144,29 @@ print(matrix)
 matrix_t = [[row[i] for row in matrix] for i in range(3)]
 # matrix의 행마다 순차적으로 147(i=0)/258(i=1)/369(i=2)를 뽑아내서 출력
 print(matrix_t)
+
+# 시험 -> 체커 보드 패턴 만들기
+table = []
+
+def printList(mylist):
+    for row in range(len(mylist)):
+        for col in range(len(mylist[row])):
+            print(mylist[row][col], end=" ")
+        print() #줄바꿈
+
+"""
+def init(mylist):
+    for row in range(len(mylist)):
+        for col in range(len(mylist[row])):
+            if((col+row)%2==0):
+                mylist[row][col] = 1
+"""
+def init(mylist):
+    return [[1 if(row + col) % 2==0 else 0 for col in range(len(mylist[row]))]for row in range(len(mylist))]
+
+for row in range(10): #10*10 mat 생성->row 10개 줄
+    table +=[[0]*10] #하나의 행에 col 10개를 생성, 모두 0대입
+
+table = init(table)
+printList(table)
+
