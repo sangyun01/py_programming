@@ -2,7 +2,7 @@
 
 # 수업시간 끄적끄적
 gen = (x * x for x in range(5))
-
+"""
 print(gen)
 
 x = tuple(gen)
@@ -30,7 +30,7 @@ en_kr_dict = {"one": "하나", "two": "둘", "three": "셋"}
 
 en_word = input("단어를 입력하시오: ")
 print(en_kr_dict[en_word])
-
+"""
 # Lab: 연락처 처리
 contacts = dict()
 
@@ -58,11 +58,15 @@ while True:
         find_key_name = input("이름: ")
 
         if find_key_name in contacts:
-            print(f"전화번호 : {contacts[find_key_name]}")
+            print(f"{find_key_name}의 전화번호 : {contacts[find_key_name]}")
         else:
             print("해당 연락처가 없습니다.")
     elif menu == 4:
-        print(contacts)
+
+        for key_name in contacts:
+            print(f"{key_name}의 전화번호 : {contacts[key_name]}")
+        else:
+            print("해당 연락처가 없습니다.")
     elif menu == 5:
         break
     else:
