@@ -30,7 +30,8 @@ en_kr_dict = {"one": "하나", "two": "둘", "three": "셋"}
 
 en_word = input("단어를 입력하시오: ")
 print(en_kr_dict[en_word])
-"""
+
+
 # Lab: 연락처 처리
 contacts = dict()
 
@@ -62,7 +63,6 @@ while True:
         else:
             print("해당 연락처가 없습니다.")
     elif menu == 4:
-
         for key_name in contacts:
             print(f"{key_name}의 전화번호 : {contacts[key_name]}")
         else:
@@ -142,3 +142,6 @@ for i in analysis_str:
 
 for k, v in cal.items():
     print(f"{k}의 개수 : {v}")
+
+"""
+
