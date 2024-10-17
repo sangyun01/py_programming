@@ -35,22 +35,22 @@ import math
 class Circle:
     def __init__(self, radius):
         self.r = radius
-        self.area = 0
-        self.Primeter = 0
 
     def getArea(self):
         self.area = math.pi * self.r**2
+        return self.area
 
     def getPrimeter(self):
         self.Primeter = math.pi * 2 * self.r
+        return self.Primeter
 
 circle = Circle(10)
 
-circle.getArea()
-circle.getPrimeter()
+a = circle.getArea()
+p = circle.getPrimeter()
 
-print(f"원의 면적 {circle.area}")
-print(f"원의 둘레 {circle.Primeter}")
+print(f"원의 면적 {a}")
+print(f"원의 둘레 {p}")
 
 # Lab: 자동차 클래스 정의
 
