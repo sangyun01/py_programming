@@ -3,15 +3,29 @@
 # Lab: TV 클래스 정의
 
 class TVsettings:
-    def __init__(self, channel, volume, ON):
-        self.setChannel = channel
-        self.getvolume = volume
-        self.turnon = ON
+    def __init__(self):
+        self.channel = 0
+        self.volume = 0
+        self.turnon = False
 
     def show(self):
-        print(f"{self.setChannel} {self.getvolume} {self.turnon}")
+        self.turnon = True
+        print(f"{self.channel} {self.volume} {self.turnon}")
+    
+    def setChannel(self, channel):
+        self.channel = channel
+    
+    def getChannel(self, channel):
+        self.channel = channel
+        return self.channel
+    
+    def setVolume(self, volume):
+        self.volume = volume
 
-samsung = TVsettings(11, 20, True)
+samsung = TVsettings()
+samsung.show()
+samsung.setChannel(11)
+samsung.setVolume(10)
 samsung.show()
 
 # Lab: 원 클래스 정의
@@ -166,3 +180,6 @@ dice.print_dice()
 dice.roll_dice()
 value = dice.read_dice()  # 다시 굴려서 값 변동 확인
 print(f"주사위의 값 : {value}") # 처음과 값이 다르게 나올 수 있음 
+
+
+print("가현아 지민아 공부해라~")
