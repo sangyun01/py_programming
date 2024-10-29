@@ -178,5 +178,3 @@ dice.roll_dice()
 value = dice.read_dice()  # 다시 굴려서 값 변동 확인
 print(f"주사위의 값 : {value}") # 처음과 값이 다르게 나올 수 있음 
 
-
-print("가현아 지민아 공부해라~")
