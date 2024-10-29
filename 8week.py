@@ -46,11 +46,8 @@ class Circle:
 
 circle = Circle(10)
 
-a = circle.getArea()
-p = circle.getPrimeter()
-
-print(f"원의 면적 {a}")
-print(f"원의 둘레 {p}")
+print(f"원의 면적 {circle.getArea()}")
+print(f"원의 둘레 {circle.getPrimeter()}")
 
 # Lab: 자동차 클래스 정의
 
