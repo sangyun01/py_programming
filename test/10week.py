@@ -53,7 +53,7 @@ for row in data:
         low_temp = float(row[3])
 
 print(f"가장 추웠던 날의 기온은 {low_temp}ºC입니다.")
-
+"""
 
 # Lab : 디렉토리 안의 파일 처리
 import os
@@ -66,26 +66,16 @@ for name in files:
     for line in infile.readlines():
         if line.find("Python") != -1:
             print(f"{name}:{line}")
-
+"""
 #Lab : 이미지 파일 복사하기
 infile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//123.png", "rb")
 outfile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//copy_file.png", "wb")
 
 data = infile.read()
 outfile = outfile.write(data)
-
-#Lab: 정규식 이용하기
-infile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//number.txt", "r")
-
-course_name = []
-
-for line in infile:
-    text_content = line.split()
-    course_name.append(text_content[0])
-
-print(course_name)
 """
-#Lab: 패스워드 검사 프로그램
+"""
+#Lab: 정규식 이용하기
+infile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//number.txt")
 
-
-
+"""
