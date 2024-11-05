@@ -53,19 +53,29 @@ for row in data:
         low_temp = float(row[3])
 
 print(f"가장 추웠던 날의 기온은 {low_temp}ºC입니다.")
+"""
 
-
-# Lab : 디렉토리 안의 파일 처리
+# Lab : 디렉토리 안의 파일 처리 - 수정 중
 import os
 
-cwd = os.getcwd()
 files = os.listdir()
 
 for name in files:
-    infile = open(name)
-    for line in infile.readlines():
-        if line.find("Python") != -1:
-            print(f"{name}:{line}")
+    if os.path.isfile(name):  # 파일인지 확인하여 디렉토리 건너뛰기
+        try:
+            with open(name, "r", encoding="utf-8") as infile:  # with 구문으로 파일 열기
+                for line in infile:
+                    if "Python" in line:
+                        print(f"{name}: {line.strip()}")
+                        
+        except PermissionError:
+            print(f"Permission denied for file: {name}")
+        except UnicodeDecodeError:
+            print(f"Cannot decode file: {name}")
+
+
+
+"""
 
 #Lab : 이미지 파일 복사하기
 infile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//123.png", "rb")
@@ -84,8 +94,31 @@ for line in infile:
     course_name.append(text_content[0])
 
 print(course_name)
+
+# Lab: 패스워드 검사 프로그램
+
+import re
+
+pw = input("패스워드를 입력하시오 : ")
+decidepw = False
+
+while True:
+    if len(pw) < 8:
+        break
+    elif not re.search("[a-z]", pw):
+        break
+    elif not re.search("[A-Z]", pw):
+        break
+    elif not re.search("[0-9]", pw):
+        break
+    elif not re.search("[_@$]", pw):
+        break
+    else:
+        decidepw = True
+        break
+
+if decidepw == True:
+    print("올바른 PW")
+else:
+    print("PW 재설정")
 """
-#Lab: 패스워드 검사 프로그램
-
-
-
