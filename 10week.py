@@ -1,5 +1,5 @@
 # 10주차 파일과 예외처리
-"""
+
 # Lab: 매출 파일 처리
 
 infile = open(
@@ -53,29 +53,25 @@ for row in data:
         low_temp = float(row[3])
 
 print(f"가장 추웠던 날의 기온은 {low_temp}ºC입니다.")
-"""
 
-# Lab : 디렉토리 안의 파일 처리 - 수정 중
+# Lab : 디렉토리 안의 파일 처리
+
 import os
+arr = os.listdir()
 
-files = os.listdir()
+for f in arr:
+    print(f)
+    if not os.path.isfile(f):
+        print("not file")
+        continue
+    infile = open(f, "r", encoding="utf=8", errors="ignore")
+    lines = infile.readlines()
 
-for name in files:
-    if os.path.isfile(name):  # 파일인지 확인하여 디렉토리 건너뛰기
-        try:
-            with open(name, "r", encoding="utf-8") as infile:  # with 구문으로 파일 열기
-                for line in infile:
-                    if "Python" in line:
-                        print(f"{name}: {line.strip()}")
-                        
-        except PermissionError:
-            print(f"Permission denied for file: {name}")
-        except UnicodeDecodeError:
-            print(f"Cannot decode file: {name}")
-
-
-
-"""
+    for line in lines:
+        e = line.rstrip()
+        if "Python" in e :
+            print(f, ":", e)
+    infile.close()
 
 #Lab : 이미지 파일 복사하기
 infile = open("C://Users//SamSung//OneDrive//바탕 화면//대학교//제10장 파일과 예외처리(2024) - data//123.png", "rb")
@@ -121,4 +117,3 @@ if decidepw == True:
     print("올바른 PW")
 else:
     print("PW 재설정")
-"""
