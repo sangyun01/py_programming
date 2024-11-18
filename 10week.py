@@ -64,7 +64,7 @@ for f in arr:
     if not os.path.isfile(f):
         print("not file")
         continue
-    infile = open(f, "r", encoding="utf=8", errors="ignore")
+    infile = open(f, "r", encoding="utf-8", errors="ignore")
     lines = infile.readlines()
 
     for line in lines:
