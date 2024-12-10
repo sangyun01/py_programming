@@ -70,7 +70,7 @@ current_salary = np.array([220, 250, 330])
 ot1_current_salary = np.array([100,200,300])
 ot2_current_salary = np.array([100,300,500])
 
-current_salary += 100
+current_salary += 100 #-> 브로드캐스팅
 ot1_current_salary *=2
 ot2_current_people = ot2_current_salary[ot2_current_salary>450]
 
