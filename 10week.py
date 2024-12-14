@@ -28,14 +28,22 @@ infile = open(name , "r")
 
 cnt = {} #딕셔너리 형태
 
-for line in infile:
-    for alpha in line.strip():
-        if alpha in cnt:
-            cnt[alpha] += 1
-        else:
-            cnt[alpha] = 1
-print(cnt)
+x=infile.read(1)
 
+while x != "":
+    if x in cnt:
+        cnt[x] += 1
+    else:
+        cnt[x] =1
+
+
+# for line in infile:
+#     for alpha in line.strip():
+#         if alpha in cnt:
+#             cnt[alpha] += 1
+#         else:
+#             cnt[alpha] = 1
+print(cnt)
 
 # Lab: CVS 파일 처리
 import csv

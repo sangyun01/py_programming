@@ -1,3 +1,156 @@
+# 8장 객체와 클래스(기말고사 파트)
+
+class Television:
+    serialNumber = 0  # 클래스 변수, 대체적으로 상수, 클래스 내에서 변수 선언
+
+    def __init__(self, channel, volume, on):  # 인스턴스 변수, 외부에서 변수 선언
+        self.channel = channel
+        self.volume = volume
+        self.on = on
+        Television.serialNumber += 1  # 클래스 변수 숫자 증가
+        self.number = (
+            Television.serialNumber
+        )  # 클래스 변수의 값을 인스턴스 변수에 값을 저장
+
+    def show(self):  # 출력
+        print(self.channel, self.volume, self.on, self.number)
+
+
+def setSilentMode(t):
+    t.volume = 2
+
+
+t = Television(11, 10, True)
+s = t
+setSilentMode(t)
+t.show()
+
+if s is t:
+    print("s와 t는 동일한 객체를 참조")
+
+if s is not t:
+    print("s와 t는 동일한 객체를 참조하지 X")
+
+
+# 10장 파일과 예외처리
+try:
+    mylist = [0] * 10
+
+    num = mylist[10]
+    print(num)
+except IndexError:
+    print("인덱스 오류")
+finally:
+    print("10장 끄으읕")
+
+
+# 11장 내장함수
+a = [1, 2, 3, 4, 5]
+b = [-6, 7, -8, 9, -10]
+
+print(list(enumerate(a)))
+print(list(zip(a, b)))
+
+invitations = ["Kim", "Lee", "Park", "Choi"]
+persons = [1, 3, 0, 6]
+print(sum(persons))
+print(any(persons))
+print(all(persons))
+print(max(persons))
+
+
+print(sorted(b))
+print(b.sort())  # 반환값 None
+b.sort()
+print(b)
+
+print(
+    sorted(
+        "The health Know not of their health, but only the sick".split(), key=str.upper
+    )
+)
+
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"<이름: {self.name}, 나이: {self.age}>"
+
+
+A = [Person("홍길동", 20), Person("최자영", 38), Person("김철수", 35)]
+
+print(sorted(A, key=lambda person: person.age, reverse=True))
+
+f_temp = [0, 10, 20, 30, 40, 50]
+
+f = lambda temp: (5.0 / 9.0) * (temp - 32.0)
+
+c_temp = map(f, f_temp)
+print(list(c_temp))
+
+orders = [
+    ["1", "재킷", 5, 120000],
+    ["2", "셔츠", 6, 24000],
+    ["3", "바지", 3, 50000],
+    ["4", "코드", 6, 300000],
+]
+
+t = lambda x: (x[0], x[2] * x[3])
+
+C = list(map(t, orders))
+print(C)
+
+mylist = [True, True, True]
+print(all(mylist))
+
+mytuple = (0, 1, False)
+print(any(mytuple))
+
+t = ["BBB", "AAA", "aaa", "bbb"]
+
+print(sorted(t))
+
+lst_1 = ["A", "B", "C"]
+lst_2 = [1, 2, 3]
+
+print(list(zip(lst_1, lst_2)))
+
+result = (lambda x: x * 2)(2)
+print(result)
+result = (lambda x: (x + 3) * 5 / 2)(3)
+print(result)
+
+
+numbers = [1, 2, 3, 4, 5, 6]
+print(list(map(lambda x: x + 1, numbers)))
+print(list(filter(lambda x: x % 2, numbers)))
+
+# class X:
+#     def __init__(self):
+#         print("X: __init__()")
+
+# class Y(X):
+#     def  __init__(self):
+#         print("Y:__init__()")
+
+# print(y=Y())
+
+class X:
+    def __init__(self, a):
+        self.a = a
+
+    def inc(self):
+        self.a+=1
+
+    def __repr__(self):
+        return f"VALUE: {self.a}"
+    
+print(X(20))
+
+"""
 # 12장 상속
 
 import math
@@ -224,3 +377,25 @@ print(C)
 plt.plot(F)
 plt.plot(C)
 plt.show()
+
+
+# 15장 판다스
+
+import pandas as pd
+
+titanic = pd.read_csv("C://Users//User//Desktop//중앙대//2학년//2학기//객지프//과제//titanic.csv")
+
+# print(max(titanic.Age))
+# print(titanic.Age.max())
+# print(titanic["Age"].max())
+
+titanic.to_excel("C://Users//User//Desktop//중앙대//2학년//2학기//객지프//과제//titanic.xlsx", sheet_name='passengers',index=False)
+
+# print(titanic[titanic.Age < 20].head())
+# print(titanic[titanic.Pclass.isin([1,3])])
+print(titanic.loc[titanic.Age < 20, "Name"])
+print(titanic.sort_values(by=["Pclass", "Age"], ascending=False).head())
+
+print(titanic[["Sex", "Pclass", "Age"]].groupby("Sex").mean())
+print(titanic.groupby(["Sex","Pclass"])[["Fare","Age"]].mean())
+"""
