@@ -1,3 +1,4 @@
+"""
 # Lab: 2차원 벡터
 class Cal:
     def __init__(self, x, y):
@@ -57,7 +58,11 @@ f = open(
 data = csv.reader(f)
 header = next(data)
 
-#채우기
+low_temp = 100
+
+for temp in data:
+    if float(temp[3]) < low_temp:
+        low_temp = float(temp[3])
 
 print(f"가장 추웠던 날의 기온은 {low_temp}ºC입니다.")
 
@@ -125,7 +130,117 @@ if decidepw == True:
 else:
     print("PW 재설정")
 
+# 11주차 내장 함수
 
+# Lab: 내장 함수 예제
+invitations = ["Kim", "Lee", "Park", "Choi"]
+persons = [1, 3, 0, 6]
+print(sum(persons))
+
+if any(persons):
+    print("파티에 한 사람이라도 옵니다.")
+else:
+    print("파티에 모든 그룹이 오지 않습니다.")
+
+if all(persons):
+    print("파티에 초대받은 모든 그룹이 옵니다.")
+else:
+    print("파티에 초대받은 그룹 중 일부만 옵니다.")
+
+print(f"파티에 가장 많이 오는 그룹의 인원 수는 {max(persons)}")
+
+# Lab : 키를 이용한 정렬 예제
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"<이름 : {self.name}, 나이 : {self.age}>"
+
+
+persons = [Person("홍길동", 20), Person("김철수", 35), Person("최자영", 38)]
+
+def keyage(Person):
+    return Person.age
+
+print(sorted(persons, key=keyage))
+
+# Lab : 람다식으로 온도 변환하기
+f_temp = [0, 10, 20, 30, 40, 50]
+
+c_temp = map(lambda T: (5.0 / 9.0) * (T - 32), f_temp)
+
+print(list(c_temp))
+
+# Lab : 람다식으로 데이터 처리하기
+orders = [
+    ["1", "재킷", 5, 120000],
+    ["2", "셔츠", 6, 24000],
+    ["3", "바지", 3, 50000],
+    ["4", "코드", 6, 300000],
+]
+
+func = lambda mon : (mon[0],mon[2]*mon[3])
+
+print(list(map(func, orders)))
+
+# Lab: 피보나치 이터레이터
+class Fiblterator:
+    def __init__(self, a=1, b=0, maxValue=50):
+        self.a = a
+        self.b = b
+        self.max = maxValue
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        sum = self.a + self.b
+        if sum > self.max:
+            raise StopIteration
+        else:
+            self.a = self.b
+            self.b = sum
+            return sum
+
+for i in Fiblterator():
+    print(i, end=" ")
+
+
+# Lab: Book 클래스
+class Book:
+    def __init__(self, title="", page=0):
+        self.title = title
+        self.page = page
+
+    def __repr__(self):
+        return self.title
+
+    def __gt__(self, other):
+        return self.title > other.title
+
+    def __add__(self, other):
+        return self.page + other.page
+
+book1 = Book("Magic or Python", 600)
+book2 = Book("Master or Python", 700)
+
+print(book1 > book2)
+print(book1 + book2)
+
+# Lab: 동전 던지기 게임
+import random
+
+myList = ["head", "tail"]
+
+while True:
+    ans = input("동전 던지기를 계속하시겠습니까?(yes, no)")
+
+    if ans == "yes":
+        print(random.choice(myList))
+    else:
+        break
 
 # 12장 상속
 
@@ -134,7 +249,23 @@ class Bank:
     def getInterestRate(self):
         return 0.0
 
-# 채우기 : 순서대로 이자율 10 / 5 / 3
+class BadBank:
+    def __init__(self, rate = 10.0):
+        self.rate = rate
+    def getInterestRate(self):
+        return self.rate
+    
+class NormalBank:
+    def __init__(self, rate = 5.0):
+        self.rate = rate
+    def getInterestRate(self):
+        return self.rate
+    
+class GoodBank:
+    def __init__(self, rate = 3.0):
+        self.rate = rate
+    def getInterestRate(self):
+        return self.rate
 
 b1 = BadBank()
 b2 = NormalBank()
@@ -155,10 +286,11 @@ class Employee:
     
 class Manager(Employee):
     def __init__(self, name, salary, bonus):
-        #채우기
+        super().__init__(name, salary)
+        self.bonus = bonus
 
     def getsalary(self):
-        #채우기
+        return self.salary + self.bonus
     
     def __repr__(self):
         return f"이름: {str(self.name)}; 월급: {str(self.salary)}; 보너스: {str(self.bonus)}"
@@ -183,17 +315,18 @@ class BankAccount:
 
 class SavingsAccount(BankAccount):
     def __init__(self, name, number, balance, interest_rate):
-        #채우기 이자율 -> 실수형
+        super().__init__(name, number, balance)
+        self.interest_rate = interest_rate
 
     def add_interest(self):
-        #채우기 -> 호출될때마다 예금에 이자 더하기
+        self.balance += self.balance*0.05
 
 class CheckingAccount(BankAccount):
     def __init__(self, name, number, balance):
-        #채우기
+        super().__init__(name, number, balance)
 
     def withdraw(self, amount):
-        #채우기
+        self.balance -= amount + 10000
     
 a1 = SavingsAccount("홍길동", 123456, 10000, 0.05)
 a1.add_interest()
@@ -219,10 +352,14 @@ class Card:
 
 class Deck:
     def __init__(self):
-        #채우기
+        self.cards = []
+        for suit in range(0,4):
+            for rank in range(0,14):
+                self.cards.append(Card(suit, rank))
 
     def __str__(self):
-        #채우기
+        l= [str(card) for card in self.cards]
+        return str(l)
 
 deck = Deck()
 print(deck)
@@ -251,13 +388,14 @@ class Student(Person):
 
 class Teacher(Person):
     def __init__(self, name, number):
-        #채우기
+        super().__init__(name, number)
 
     def assignTeaching(self, course):
-        #채우기
+        self.course = course
+        self.salary = 3000000
         
     def __str__(self):
-        #채우기
+        return f"이름={self.name}\n주민번호={self.number}\n강의과목={str(self.course)}\n월급={str(self.salary)}"
 
 hong = Student("홍길동", "12345678", Student.UNDERGRADUATE)
 hong.enrollCourse("자료구조")
@@ -300,7 +438,7 @@ for car in cars:
 
 # for car in cars:
 #     print(f"{car.name} : {car.stop()}")
-
+"""
 
 # 14장 넘파이
 
@@ -310,7 +448,7 @@ import numpy as np
 heights = [1.83, 1.76, 1.69, 1.86, 1.77, 1.73]
 weights = [86, 74, 59, 95, 80, 68]
 
-#채우기
+bmi = np.array(weights) / (np.array(heights) ** 2)
 
 print(bmi)
 
@@ -319,13 +457,14 @@ print(bmi)
 import matplotlib.pyplot as plt
 import numpy as np
 
-purse = #채우기
-noise = #채우기
+purse = np.linspace(1, 10, 100)
+noise = np.random.normal(size=100)
 
-signal = #채우기
+signal = purse + noise
 
-plt.plot(signal)
-plt.show()
+# plt.plot(signal)
+# plt.show()
+
 
 # Lab: 정규 분포 그래프 그리기
 import numpy as np
@@ -333,7 +472,12 @@ import matplotlib.pyplot as plt
 
 m, sigma = 10, 2
 
-#채우기
+number1 = np.random.randn(10000)
+number2 = m + sigma * np.random.randn(10000)
+
+# plt.hist(number1)
+# plt.hist(number2)
+# plt.show()
 
 
 # Lab: sin함수 그리기
@@ -341,23 +485,52 @@ m, sigma = 10, 2
 import numpy as np
 import matplotlib.pyplot as plt
 
-#채우기
+x = np.linspace(-2 * np.pi, 2 * np.pi, 100)
 
+y1 = np.sin(x)
+y2 = 3 * np.sin(x)
+# plt.plot(x,y1,x,y2)
+# plt.show()
 
-#Lab: MSE 오차 계산하기
+# Lab: MSE 오차 계산하기
 import numpy as np
 
-ypred = np.array([1,0,0,0,0])
-y=np.array([0,1,0,0,0])
+ypred = np.array([1, 0, 0, 0, 0])
+y = np.array([0, 1, 0, 0, 0])
 
-#채우기
+mse = np.mean((ypred - y) ** 2)
+print(mse)
 
-#Lab: 직원들의 월급 인상하기
-#채우기
+# Lab: 직원들의 월급 인상하기
+salary1 = np.array([220,250,230])
+salary2 = np.array([220,250,230])
+salary3 = np.array([220,250,500])
+salary1 += 100
+salary2 *= 2
 
+print(salary1)
+print(salary2)
+print(salary3[salary3>450])
 
-#Lab: 그래프 그리기
+# Lab: 그래프 그리기
 import matplotlib.pyplot as plt
 import numpy as np
-#채우기
 
+x= np.linspace(0,10,1000)
+
+y=np.ones(len(x))
+y1=x
+y2=x**2
+
+plt.plot(x,y,x,y1,x,y2)
+plt.show()
+
+x=np.zeros(10)
+x[4]=1
+
+x=np.arange(10,20)
+x=np.linspace(0,9,10)
+
+x=x[::-1]
+
+print(x)

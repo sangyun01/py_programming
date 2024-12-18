@@ -399,3 +399,30 @@ print(titanic.sort_values(by=["Pclass", "Age"], ascending=False).head())
 print(titanic[["Sex", "Pclass", "Age"]].groupby("Sex").mean())
 print(titanic.groupby(["Sex","Pclass"])[["Fare","Age"]].mean())
 """
+
+
+import numpy as np
+
+my_vector = np.array([1,2,3,4,5,6])
+selection = my_vector % 2 == 0
+
+print(my_vector[selection])
+
+first_matrix = np.array([[1,2,3],[4,5,6]])
+second_matrix = np.array([1,2,3])
+
+print(first_matrix+second_matrix)
+
+A=np.zeros(10)
+
+A[4] += 1
+
+print(A)
+
+B=np.arange(10,20)
+print(B)
+
+C=np.arange(0,10)
+C=C[::-2]
+
+print(C)
