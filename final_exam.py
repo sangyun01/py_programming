@@ -122,7 +122,7 @@ result = (lambda x: x * 2)(2)
 print(result)
 result = (lambda x: (x + 3) * 5 / 2)(3)
 print(result)
-
+print(result**2)
 
 numbers = [1, 2, 3, 4, 5, 6]
 print(list(map(lambda x: x + 1, numbers)))
